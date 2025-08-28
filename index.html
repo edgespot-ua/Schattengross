@@ -120,42 +120,6 @@
     main {
       padding-top: 8rem;
     }
-
-    /* ПОШУК */
-    #searchBar {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%) scaleX(0.5);
-      max-width: 600px;
-      width: 60%;
-      background: white;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      display: none;
-      opacity: 0;
-      z-index: 40;
-      transition: all 0.3s ease;
-      flex-direction: row;
-      align-items: center;
-    }
-
-    #searchBar input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-    }
-
-    #searchBar button {
-      margin-left: 0.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-    }
   </style>
 </head>
 <body>
@@ -231,15 +195,26 @@
           </svg>
           <span class="cart-badge">0</span>
         </button>
-
-        <!-- ПОШУК -->
-        <div id="searchBar">
-          <input type="text" placeholder="Пошук...">
-          <button>🔍</button>
-        </div>
       </div>
     </div>
   </header>
+
+  <!-- Мінімалістична бокова панель пошуку з підкресленням -->
+  <div id="searchBar" style="position: fixed; top: 0; right: -24rem; width: 24rem; height: 100%; background: white; box-shadow: -4px 0 12px rgba(0,0,0,0.15); transition: right 0.3s ease; z-index: 50; display: flex; flex-direction: column; padding: 6rem 2rem 2rem 2rem;">
+    <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+      <div style="display: flex; align-items: center;">
+        <input type="text" placeholder="Пошук..." style="flex:1; padding:0.5rem 1rem; font-size:0.875rem; border:none; outline:none;">
+        <button style="background:none; border:none; cursor:pointer; font-size:1.1rem;"><button id="searchToggle" class="btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button></button>
+      </div>
+      <!-- Тонка лінія підкреслення -->
+      <div style="height:1px; background:#d1d5db; width:100%; margin-top:0.25rem;"></div>
+    </div>
+    
+  </div>
 
   <main>
     <div class="h-screen bg-gray-100 flex items-center justify-center">
@@ -271,19 +246,18 @@
       }
     });
 
-    searchToggle.addEventListener('click', () => {
-      if(searchBar.style.display === 'none' || searchBar.style.display === ''){
-        searchBar.style.display = 'flex';
-        searchBar.style.opacity = '0';
-        searchBar.style.transform = 'translateX(-50%) scaleX(0.5)';
-        setTimeout(() => {
-          searchBar.style.opacity = '1';
-          searchBar.style.transform = 'translateX(-50%) scaleX(1)';
-        }, 10);
+    searchToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if(searchBar.style.right === '0px'){
+        searchBar.style.right = '-24rem';
       } else {
-        searchBar.style.opacity = '0';
-        searchBar.style.transform = 'translateX(-50%) scaleX(0.5)';
-        setTimeout(() => { searchBar.style.display = 'none'; }, 300);
+        searchBar.style.right = '0';
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!searchBar.contains(e.target) && !searchToggle.contains(e.target)){
+        searchBar.style.right = '-24rem';
       }
     });
   </script>
