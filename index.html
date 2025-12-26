@@ -21,6 +21,14 @@
       margin: 0;
     }
 
+    main{
+   
+  display: flex;
+  flex-direction: column;
+  gap: 30px;   /* проміжок між секціями */
+}
+
+
     .hitlerr{
         width: 1920px ;
         height: auto;
@@ -117,9 +125,283 @@
       border-radius: 9999px;
     }
 
-    main {
-      padding-top: 8rem;
+
+  
+    sect1{
+      width: 1600px;
+      height: auto;
+
+      background-image: url("https://media.gq-magazin.de/photos/61542ca9d7f4080afe1df798/4:3/w_2668,h_2001,c_limit/Mode-Sneaker-New-Balance-Stone-Island-RC-Elite.jpg");
+
     }
+  
+  
+
+
+    .sect1{
+  /* розмір секції */
+  width: 100%;
+  min-height: 800px;       /* замість height:auto */
+  padding: 60px 24px;
+
+  /* фон */
+  background-image:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("https://www.sneakerstyle.fr/wp-content/uploads/2022/01/new-balance-2002r-protection-pack-phantom-M2002RDB-01.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* текст зверху */
+  color: #fff;
+  display: flex;
+  align-items:last baseline;     /* по вертикалі */
+  font-size: 30px;
+
+
+}
+
+.sect1 button{
+   background: #fff;       /* білий фон */
+  color: #000;            /* чорний текст */
+  border: 1px solid #000; /* рамка (можеш прибрати якщо не треба) */
+  padding: 10px 30px;
+  border-radius: 0;       /* 0 = прямі кути, можна 6px для трохи округлення */
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+    /* важливо: прибрати стандартний відступ у body */
+body{ margin: 0; }
+
+.two-tiles{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 рівні колонки */
+  gap: 0;                         /* без проміжку */
+  width: 100%;
+}
+
+/* квадрат + фон + текст поверх */
+.tile{
+  aspect-ratio: 1 / 1;            /* квадрат */
+  width: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+
+  color: #fff;
+  text-decoration: none;
+}
+
+/* затемнення під текст */
+.tile::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.05));
+}
+
+.tile__text{
+  position: relative;
+  z-index: 1;
+}
+
+.tile__text h2{ margin: 0 0 6px; }
+.tile__text p{ margin: 0; }
+
+
+.t1{
+  background-image: url("https://stoneisland-cdn.thron.com/delivery/public/image/stoneisland/K2S155100052S00C2V0055_A/ppk73x/std/768x1024/5100052-full-rib-rws-wool,-foto.jpg?scalemode=centered&adjustcrop=reduce&quality=90&format=avif");
+}
+.t2{
+  background-image: url("https://stoneisland-cdn.thron.com/delivery/public/image/stoneisland/K2S154100125S0182V0029_R/ppk73x/std/768x1024/4100125-matt-ripstop-cordurar-advanced-fabrics,-foto.jpg?scalemode=centered&adjustcrop=reduce&quality=90&format=avif");
+}
+
+.tile{
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tile:hover{
+  transform: translateY(-8px); /* підняти */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+  .tile:active{
+  transform: translateY(-4px);
+}
+
+
+
+
+
+
+:root{
+  --bg: #0b0b0b;
+  --accent: #ffffff;   /* жовтий */
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.75);
+}
+
+body{ margin:0; }
+
+.footer{
+  background: var(--bg);
+  color: var(--text);
+  padding: 60px 0 30px;
+}
+
+.footer__inner{
+  width: min(1300px, 100%);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 4 колонки */
+.footer__grid{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+.footer__title{
+  margin: 0 0 14px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.footer__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.footer__list a{
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer__list a:hover{
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Соц. іконки */
+.footer__social{
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+}
+
+.footer__icon{
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+/* Нижній блок */
+.footer__bottom{
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.footer__text{
+  margin: 0;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.footer__pay{
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer__pay img{
+  width: 76px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Самий низ */
+.footer__bar{
+  margin-top: 50px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer__copy{
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer__logo{
+  width: 90px;
+  height: 90px;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  color: #000;
+  font-weight: 700;
+}
+
+/* Адаптація */
+@media (max-width: 900px){
+  .footer__grid{
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .footer__bottom{
+    grid-template-columns: 1fr;
+  }
+
+  .footer__pay{
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 520px){
+  .footer__grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
   </style>
 </head>
 <body>
@@ -165,6 +447,7 @@
                 <ul class="space-y-1">
                   <li><a href="#" class="btn">Schattengros</a></li>
                   <li><a href="#" class="btn">New Balance</a></li>
+                   <li><a href="#" class="btn">Stone Island</a></li>
                 </ul>
                 <h3 class="mt-4">𝕹ew 𝕬rrivals</h3>
                 <a href="#" class="btn text-indigo-600 hover:underline">Shop now</a>
@@ -181,8 +464,7 @@
       </nav>
 
       <div class="flex items-center space-x-4 relative">
-        <a href="#" class="btn">Sign in</a>
-        <a href="#" class="btn">Create account</a>
+       
         <span class="text-sm"></span>
         <button id="searchToggle" class="btn">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -217,18 +499,111 @@
   </div>
 
   <main>
-    <div class="h-screen bg-gray-100 flex items-center justify-center">
-      <img class="hitlerr" src="https://blog.sneakerhead.ru/content/images/size/w1200/2023/07/stone-island-x-nb-3-1.png" alt="">
-    </div>
-    <div class="h-screen bg-gray-200 flex items-center justify-center">
-      <h1 class="text-3xl">Content Section 2</h1>
-    </div>
-    <div class="h-screen bg-gray-300 flex items-center justify-center">
-      <h1 class="text-3xl">Content Section 3</h1>
-    </div>
+   
+  
+    <section class="sect1">
+     <p>1906R | PROTECTION PUCK  <br>
+     <a href="https://www.stoneisland.com/de-at/collection/alles-anzeigen"><button> CEE MORE</button></a></p>
+      
+     </section>
+
+     <section class="two-tiles">
+        <a class="tile t1" href="#">
+        <div class="tile__text">
+         <h2>5100052 FULL RIB RWS WOOL</h2>
+         <p>Rollkragenpullover mit fein gerippten Abschlüssen</p>
+        </div>
+          </a>
+
+          <a class="tile t2" href="#">
+              <div class="tile__text">
+                <h2>4100125 MATT RIPSTOP CORDURA® ADVANCED FABRICS</h2>
+               <p>Daunenjacke mit wasserabweisendem Finish</p>
+              </div>
+               </a>
+       </section>
+
+
+
   </main>
 
-  <footer></footer>
+  <footer class="footer">
+  <div class="footer__inner">
+
+    <!-- Верх: 4 колонки -->
+    <div class="footer__grid">
+
+      <div class="footer__col">
+        <h4 class="footer__title">SCHATTENGROSS</h4>
+        <ul class="footer__list">
+          <li>Kassel</li>
+          <li>Leipziger Str. 37</li>
+          <li>MN-FR 10:00–20:00</li>
+          <li><a href="tel:+380931234567">+49 0931234567</a></li>
+          <li><a href="mailto:order@site.com">schattengross@site.de</a></li>
+        </ul>
+
+        <div class="footer__social">
+          <a class="footer__icon" href="#" aria-label="Instagram">IG</a>
+          <a class="footer__icon" href="#" aria-label="Telegram">TG</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">ДОПОМОГА</h4>
+        <ul class="footer__list">
+          <li><a href="#">Оплата і доставка</a></li>
+          <li><a href="#">Обмін та повернення</a></li>
+          <li><a href="#">Рекламації</a></li>
+          <li><a href="#">Угода користувача</a></li>
+          <li><a href="#">Публічна оферта</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">ІНФОРМАЦІЯ</h4>
+        <ul class="footer__list">
+          <li><a href="#">Про нас</a></li>
+          <li><a href="#">Контакти</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">БРЕНДИ</h4>
+        <ul class="footer__list">
+          <li><a href="#">Stone Island</a></li>
+          <li><a href="#">A-Cold-Wall</a></li>
+          <li><a href="#">Carhartt WIP</a></li>
+          <li><a href="#">C.P. Company</a></li>
+          <li><a href="#">Всі бренди</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Низ: "Про нас" + оплата -->
+    <div class="footer__bottom">
+      <div class="footer__about">
+        <h4 class="footer__title">ПРО НАС</h4>
+        <p class="footer__text">
+          Schttengross - це концепт-магазин одягу, який об'єднує моду, спорт та снікер-культуру в одному просторі.ㅤ
+        </p>
+      </div>
+
+      <div class="footer__pay">
+        <img src="https://dummyimage.com/70x40/ffffff/000000&text=MC" alt="Mastercard">
+        <img src="https://dummyimage.com/70x40/ffffff/000000&text=VISA" alt="VISA">
+        <img src="https://dummyimage.com/70x40/ffffff/000000&text=Pay" alt="Apple Pay">
+        <img src="https://dummyimage.com/70x40/ffffff/000000&text=GPay" alt="Google Pay">
+      </div>
+    </div>
+
+    <!-- Самий низ -->
+    <div class="footer__bar">
+      <div class="footer__copy">© 2025, SCHATTENGROSS.</div>
+  </div>
+</footer>
+
 
   <script>
     const topBanner = document.getElementById('topBanner');
